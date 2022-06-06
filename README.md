@@ -28,8 +28,8 @@ inner_using_outer_declarations_via_temp:- a=14
 If you try to only use `call_site` for do_something_ident:
 ```
 pub fn inner_using_outer_declarations_via_fn(_input: TokenStream) -> TokenStream {
-    let do_something_ident = Ident::new("do_something", Span::call_site()); // Causes: error[E0428]: the name `do_something` is defined multiple times
-    //let do_something_ident = Ident::new("do_something", Span::def_site());
+    let do_something = Ident::new("do_something", Span::call_site()); // Enabling causes compile error
+    //let do_something = Ident::new("do_something", Span::def_site());
     ...
 ```
 You **don't** need to set `RUSTFLAGS` but you'll get `defined multiple times` errors:

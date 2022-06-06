@@ -22,14 +22,14 @@ use quote::quote;
 
 #[proc_macro]
 pub fn inner_using_outer_declarations_via_fn(_input: TokenStream) -> TokenStream {
-    //let do_something_ident = Ident::new("do_something", Span::call_site()); // Causes: error[E0428]: the name `do_something` is defined multiple times
-    let do_something_ident = Ident::new("do_something", Span::def_site());
+    //let do_something = Ident::new("do_something", Span::call_site()); // Enabling causes compile error
+    let do_something = Ident::new("do_something", Span::def_site());
     quote!(
         println!("inner_using_outer_declarations_via_fn:+ a={}", a);
-        fn #do_something_ident(a: i32) -> i32 {
+        fn #do_something(a: i32) -> i32 {
             a + 1
         }
-        a = #do_something_ident(a);
+        a = #do_something(a);
         println!("inner_using_outer_declarations_via_fn:- a={}", a);
     )
     .into()
