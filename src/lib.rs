@@ -47,17 +47,17 @@ pub fn inner_using_outer_declarations_via_temp(_input: TokenStream) -> TokenStre
     .into()
 }
 
+fn do_something(a: i32) -> i32 {
+    a + 1
+}
+
 #[proc_macro]
 pub fn outer(_input: TokenStream) -> TokenStream {
+    let ds = do_something(9);
     let q = quote! {
-        let mut a = 10;
+        let mut a = #ds;
         let temp = "123";
 
-        fn do_something(a: i32) -> i32 {
-            a + 1
-        }
-
-        a = do_something(a);
         inner_using_outer_declarations_via_fn!();
         inner_using_outer_declarations_via_temp!();
         inner_using_outer_declarations_via_fn!();
