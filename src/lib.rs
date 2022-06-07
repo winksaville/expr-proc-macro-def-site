@@ -51,10 +51,19 @@ pub fn inner_using_outer_declarations_via_temp(_input: TokenStream) -> TokenStre
 pub fn outer(_input: TokenStream) -> TokenStream {
     let q = quote! {
         let mut a = 10;
+        let temp = "123";
+
+        fn do_something(a: i32) -> i32 {
+            a + 1
+        }
+
+        a = do_something(a);
         inner_using_outer_declarations_via_fn!();
         inner_using_outer_declarations_via_temp!();
         inner_using_outer_declarations_via_fn!();
         inner_using_outer_declarations_via_temp!();
+
+        assert_eq!(temp, "123");
     };
     //println!("outer: q={:#?}", q);
     q.into()

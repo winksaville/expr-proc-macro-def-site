@@ -13,16 +13,16 @@ $ RUSTFLAGS='--cfg procmacro2_semver_exempt' cargo run
    Compiling unicode-ident v1.0.0
    Compiling quote v1.0.18
    Compiling expr-proc-macro-def-site v0.1.0 (/home/wink/prgs/rust/myrepos/expr-proc-macro-def-site)
-    Finished dev [unoptimized + debuginfo] target(s) in 1.36s
+    Finished dev [unoptimized + debuginfo] target(s) in 1.12s
      Running `target/debug/expr-proc-macro-def-site`
-inner_using_outer_declarations_via_fn:+ a=10
-inner_using_outer_declarations_via_fn:- a=11
-inner_using_outer_declarations_via_temp:+ a=11
-inner_using_outer_declarations_via_temp:- a=12
-inner_using_outer_declarations_via_fn:+ a=12
-inner_using_outer_declarations_via_fn:- a=13
-inner_using_outer_declarations_via_temp:+ a=13
-inner_using_outer_declarations_via_temp:- a=14
+inner_using_outer_declarations_via_fn:+ a=11
+inner_using_outer_declarations_via_fn:- a=12
+inner_using_outer_declarations_via_temp:+ a=12
+inner_using_outer_declarations_via_temp:- a=13
+inner_using_outer_declarations_via_fn:+ a=13
+inner_using_outer_declarations_via_fn:- a=14
+inner_using_outer_declarations_via_temp:+ a=14
+inner_using_outer_declarations_via_temp:- a=15
 ```
 
 If you try to only use `call_site` for do_something_ident:
